@@ -21,10 +21,9 @@ struct Fenwick {
         return res;
     }
 
-    void range_add(int l, int r, ll delta) {
-        if (l > r) return;
-        add(l, delta);
-        add(r + 1, -delta);
+    ll range_sum(int l, int r) {
+        if (l > r) return 0;
+        return sum(r) - sum(l - 1);
     }
 };
 
@@ -45,71 +44,46 @@ int main() {
             F[x] = 1LL * x * lowbit;
         }
 
-        vector<int> L(q), R(q);
-        vector<vector<int>> add_at(n + 2), remove_at(n + 2);
-        
+        vector<vector<int>> ops_by_len(n + 2);
+        vector<int> L(q), R(q), len(q);
+
         for (int i = 0; i < q; i++) {
             cin >> L[i] >> R[i];
-            add_at[L[i]].push_back(i);
-            remove_at[R[i] + 1].push_back(i);
+            len[i] = R[i] - L[i] + 1;
+            ops_by_len[len[i]].push_back(i);
         }
 
-        vector<ll> ans(n + 2, 0);
-        
-       
-        Fenwick bit_cnt(n), bit_sum(n);
-        
-      
-        for (int pos = 1; pos <= n; pos++) {
-           
-            for (int idx : add_at[pos]) {
-                
-            }
-            
-         
-            for (int idx : remove_at[pos]) {
-                
-            }
-            
-           
-        }
-        
-       
-        vector<vector<pair<int, int>>> queries_by_left(n + 2);
-        for (int i = 0; i < q; i++) {
-            queries_by_left[L[i]].push_back({R[i], i});
-        }
-        
         vector<ll> final_ans(n + 2, 0);
-        
-       
-        vector<vector<int>> updates(n + 2);
+        vector<vector<pair<int, int>>> ops_at_l(n + 2);
         for (int i = 0; i < q; i++) {
-            int len = R[i] - L[i] + 1;
-            updates[L[i]].push_back(len);
+            ops_at_l[L[i]].push_back(make_pair(R[i], i));
         }
-        
-       
+
         for (int l = 1; l <= n; l++) {
-            if (updates[l].empty()) continue;
-            
-            
-            int max_len = 0;
-            for (int len : updates[l]) {
-                max_len = max(max_len, len);
+            if (ops_at_l[l].empty()) continue;
+            int max_r = l - 1;
+
+            // find max r
+            for (size_t j = 0; j < ops_at_l[l].size(); j++) {
+                int r = ops_at_l[l][j].first;
+                int idx = ops_at_l[l][j].second;
+                max_r = max(max_r, r);
             }
-            
+
+            int max_len = max_r - l + 1;
             vector<int> cnt_len(max_len + 2, 0);
-            for (int len : updates[l]) {
-                cnt_len[len]++;
+
+            for (size_t j = 0; j < ops_at_l[l].size(); j++) {
+                int r = ops_at_l[l][j].first;
+                int idx = ops_at_l[l][j].second;
+                int length = r - l + 1;
+                cnt_len[length]++;
             }
-            
-            
+
             for (int k = max_len; k >= 1; k--) {
                 cnt_len[k] += cnt_len[k + 1];
             }
-            
-            
+
             for (int k = 1; k <= max_len; k++) {
                 if (cnt_len[k] > 0) {
                     int pos = l + k - 1;
@@ -119,7 +93,7 @@ int main() {
                 }
             }
         }
-        
+
         for (int i = 1; i <= n; i++) {
             cout << final_ans[i] << " \n"[i == n];
         }

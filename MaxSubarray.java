@@ -11,13 +11,17 @@ public class MaxSubarray {
             for (int i = 0; i < arr.length; i++) {
                 arr[i]=sc.nextInt();
             }
+            int count=0;    
             for (int i = 0; i < arr.length; i++) {
                 int currentmax=arr[i];
                 for (int j = i; j < arr.length; j++) {
                     currentmax=Math.max(currentmax, arr[j]);
                     System.out.print(currentmax+" ");
                 }
+                System.out.println();
+                count++;
             }
+            System.out.println(count);
             System.out.println();
             
         }
