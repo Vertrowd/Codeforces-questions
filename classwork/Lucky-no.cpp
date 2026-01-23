@@ -4,6 +4,7 @@ int main()
 {
     int a, b;
     cin >> a >> b;
+    int count3=0;
     for (int i = a; i <= b; i++)
     {
         int count1 = 0;
@@ -28,8 +29,13 @@ int main()
         if (count1 == count2)
         {
             cout << i << " ";
+            count3++;
         }
     }
-
+    if (count3==0)
+    {
+        cout<<-1;
+    }
+    
     return 0;
 }
