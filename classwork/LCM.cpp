@@ -1,12 +1,8 @@
 #include <iostream>
 using namespace std;
-
-
 int main()
 {
-
     int a, b, rem;
-    
     cin >> a >> b;
     int mult=a*b;
     rem = a % b;
@@ -30,6 +26,5 @@ int main()
     }
     int lcm=mult/gcd;
     cout<<lcm;
-
     return 0;
 }

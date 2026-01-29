@@ -4,19 +4,23 @@ int main()
 {
     long n;
     cin >> n;
-    int count = 0;
-    for (long i = 2; i*i <= n; i++)
+    while (n>0)
     {
-        if (n % i == 0)
+        int count = 0;
+
+        for (long i = 2; i * i <= n; i++)
         {
-            cout << "the no. is not prime";
-            count++;
-            break;
+            if (n % i == 0)
+            {
+                // cout << "the no. is not prime";
+                count++;
+            }
         }
-    }
-    if (count == 0)
-    {
-        cout << "The no. is prime";
+        if (count == 0)
+        {
+            cout <<n<< " is prime"<<endl;
+        }
+        n--;
     }
     return 0;
 }
