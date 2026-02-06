@@ -1,28 +1,28 @@
 #include <iostream>
 using namespace std;
-class Student{
-    int marks;
-    public:
-        void setmarks(int m){
-            marks=m;
+ 
+int main() {
+    long long t;
+    cin >> t;
+ 
+    while (t--) {
+        long long n, s;
+        cin >> n >> s;
+ 
+        long long sum = (n * (n + 1)) / 2;
+ 
+        if (sum < s) {
+            cout << -1 << endl;
+            continue;
         }
-        void getmarks(){
-            cout<<marks;
+ 
+        for (long long i = n; i >= 1 && s > 0; i--) {
+            if (s >= i) {
+                cout << i << " ";
+                s -= i;
+            }
         }
-};
-int main(){
-    Student s1;
-    s1.setmarks(79);
-    s1.getmarks();
-    // int t;
-    // long s;
-    // int n;
-    // cin>>t;
-    // while (t--)
-    // {
-    //     cin>>n>>s;
-
-    // }
-    
+        cout << endl;
+    }
     return 0;
 }
