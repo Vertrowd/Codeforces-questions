@@ -11,15 +11,17 @@ int main() {
         cin>>arr[i];
     }
     
-    int min=arr[0];
+    int min=arr[0]-0;
     for (int i = 0; i < n; i++)
     {
-        if (arr[i]<min)
+        if ((arr[i]-i)<min)
         {
-            min=arr[i];
+            cout<<arr[i]-i<<" ";
+            min=arr[i]-i;
         }
         
     }
-    cout<<min;    
+    // int res=*min_element(arr+0,arr+n);
+    cout<<endl<<min;    
     return 0;
 }

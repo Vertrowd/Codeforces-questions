@@ -1,0 +1,33 @@
+#include <iostream>
+#include <vector>
+using namespace std;
+
+int main() {
+    int n;
+    cin>>n;
+    int target;
+    cin>>target;
+    vector <int> arr(n);
+    for (int i = 0; i < n; i++)
+    {
+        cin>>arr[i];
+    }
+
+    for (int i = 0; i < n-1; i++)
+    {
+        for (int j = i+1; i < n; i++)
+        {
+            if (arr[i]+arr[j]==target)
+            {
+                cout<<"YES"<<endl;
+                cout<<arr[i]<<" "<<arr[j];
+                break;
+            }
+            
+        }
+        
+    }
+    
+    
+    return 0;
+}
