@@ -11,7 +11,7 @@ int main() {
         int n;
         cin>>n;
         int count=0;
-        int count2=0;
+        
         vector <int> arr;
         while (n)
         {
@@ -19,18 +19,18 @@ int main() {
             if (digit!=0){
                 int result = digit * floor(pow(10, count));
                 arr.push_back(result);
-                count2++;
+                
             }
             count++;
             n/=10;
             
         }
-        cout<<count2<<endl;
+        cout<<arr.size()<<endl;
         for (int i = 0; i < arr.size(); i++)
         {
             cout<<arr[i]<<" ";
         }
-        
+        cout<<endl;
     }
     
     return 0;
