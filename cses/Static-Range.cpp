@@ -5,6 +5,8 @@ using namespace std;
 
 int32_t main()
 {
+    ios_base::sync_with_stdio;
+    cin.tie(nullptr);
     int n, q;
     cin >> n >> q;
     vector<int> arr(n);
@@ -25,9 +27,9 @@ int32_t main()
         a--;
         b--;
         if (a == 0)
-            cout << pre[b] << endl;
+            cout << pre[b] << '\n';
         else
-            cout << pre[b] - pre[a - 1] << endl;
+            cout << pre[b] - pre[a - 1] << '\n';
     }
 
     return 0;
