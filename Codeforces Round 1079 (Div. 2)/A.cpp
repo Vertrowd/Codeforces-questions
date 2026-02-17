@@ -21,7 +21,7 @@ int initialvalue(int i)
     {
         if (store - digitsum(store) == i)
         {
-            flag = false;
+            flag = false; 
             count++;
             return store;
         }

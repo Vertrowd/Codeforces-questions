@@ -21,6 +21,7 @@ int main() {
         }
         
     }
+    
     // int res=*min_element(arr+0,arr+n);
     cout<<endl<<min;    
     return 0;

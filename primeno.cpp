@@ -14,6 +14,7 @@ int main()
             if (n % i == 0)
             {
                 count++;
+                cout<<i<<endl;
                 break;
             }
         }

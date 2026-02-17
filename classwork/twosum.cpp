@@ -2,32 +2,30 @@
 #include <vector>
 using namespace std;
 
-int main() {
+int main()
+{
     int n;
-    cin>>n;
+    cin >> n;
     int target;
-    cin>>target;
-    vector <int> arr(n);
+    cin >> target;
+    vector<int> arr(n);
     for (int i = 0; i < n; i++)
     {
-        cin>>arr[i];
+        cin >> arr[i];
     }
 
-    for (int i = 0; i < n-1; i++)
+    for (int i = 0; i < n - 1; i++)
     {
-        for (int j = i+1; i < n; i++)
+        for (int j = i + 1; i < n; i++)
         {
-            if (arr[i]+arr[j]==target)
+            if (arr[i] + arr[j] == target)
             {
-                cout<<"YES"<<endl;
-                cout<<arr[i]<<" "<<arr[j];
+                cout << "YES" << endl;
+                cout << arr[i] << " " << arr[j];
                 break;
             }
-            
         }
-        
     }
-    
-    
+
     return 0;
 }
