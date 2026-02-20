@@ -8,8 +8,7 @@ int main() {
     int arr1[6]={1,2,3,4,5,6};
     int arr2[6]={2,4,8,10,18,21};
     int res[12];
-    
-    
+
     for (int i = 0; i < 6; i++)
     {
         res[i+6]=arr2[i];
