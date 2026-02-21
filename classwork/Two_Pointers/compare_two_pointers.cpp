@@ -1,19 +1,49 @@
 #include <iostream>
 #include <vector>
-#include <chrono>
 using namespace std;
-using namespace std::chrono;
 
-int main() {
-auto start=high_resolution_clock::now();
-ios_base::sync_with_stdio(false);
-cin.tie(nullptr);
-    int arr1[7]={1,1,2,3,4,6,8};
-    int arr2[8]={2,4,5,7,9,13,21,26};
-    vector <int> res;
+int main()
+{
 
-auto stop=high_resolution_clock::now();
-auto duration=duration_cast<milliseconds>(stop-start);
-cout << '\n' << "Time taken " << duration.count() << " ms";
+    ios_base::sync_with_stdio(false);
+    cin.tie(nullptr);
+    int n1, n2;
+    cin >> n1 >> n2;
+    vector<int> arr1(n1), arr2(n2);
+    vector<int> res;
+    for (int i = 0; i < n1; i++)
+    {
+        cin >> arr1[i];
+    }
+    for (int i = 0; i < n2; i++)
+    {
+        cin >> arr2[i];
+    }
+
+    int index, count;
+    index = 0;
+    count = 0;
+
+    for (int i = 0; i < n2; i++)
+    {
+        for (int j = index; j < n1; j++)
+        {
+            if (arr2[i] > arr1[j])
+            {
+                index++;
+                count++;
+            }
+            else
+            {
+                break;
+            }
+        }
+        res.push_back(count);
+    }
+    for (int i = 0; i < res.size(); i++)
+    {
+        cout << res[i] << " ";
+    }
+
     return 0;
 }
