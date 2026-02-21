@@ -1,12 +1,13 @@
 #include <iostream>
 #include <vector>
+#include <cmath>
+#define int long long
 using namespace std;
 
 
-int main() {
+int32_t main() {
 
-ios_base::sync_with_stdio(false);
-cin.tie(nullptr);
+
     int n,S;
     cin>>n>>S;
     vector <int> arr(n);
@@ -15,39 +16,22 @@ cin.tie(nullptr);
         cin>>arr[i];
     }
     
-    int store=0;
-    for (int start = 0; start < n; start++)
+    int left=0;
+    int mx=0;
+    int sum=0;
+    for (int right = 0; right < n; right++)
+    {
+        sum+=arr[right];
+        while (sum>S)   
         {
-            
-            for (int e = start; e < n; e++)
-            {
-                int count=0;
-                
-                int sum=0;
-                for (int j = start; j <= e; j++)
-                {
-                    sum+=arr[j];
-                    if (sum<=S)
-                    {
-
-                        count++;
-                    }
-                    else{
-                        break;
-                    }
-                    
-                    
-                }
-                if (store<count)
-                {
-                    store=count;
-                }
-                
-                
-            }
-            
+            sum-=arr[left];
+            left++;
         }
-    cout << store;
+        mx=max(mx,(right-left+1));
+
+        
+    }
+    cout<<mx<<endl;
     
     
 
