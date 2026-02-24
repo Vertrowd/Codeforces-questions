@@ -6,6 +6,8 @@ using namespace std;
 
 
 int32_t main() {
+    ios_base::sync_with_stdio(false);
+    cin.tie(nullptr);
 
 
     int n,S;
@@ -17,21 +19,25 @@ int32_t main() {
     }
     
     int left=0;
-    int mx=0;
+    int mn=INT_MAX;
     int sum=0;
     for (int right = 0; right < n; right++)
     {
         sum+=arr[right];
-        while (sum>S)   
+        
+        while (sum>=S)   
         {
+            mn=min(mn,(right-left+1));
             sum-=arr[left];
             left++;
+            
         }
-        mx=max(mx,(right-left+1));
-
-        
     }
-    cout<<mx<<endl;
+    if (mn == INT_MAX)
+        cout << -1;
+    else{ 
+    cout<<mn;
+    }
     
     
 
